@@ -16,7 +16,7 @@ functions:
 
   hello-world:
     handler: bin/main
-    # events:
-    #   - http:
-    #       path: hello
-    #       method: post
+    events:
+      - http:
+          path: /
+          method: post
