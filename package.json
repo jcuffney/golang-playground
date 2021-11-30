@@ -10,10 +10,13 @@
     "type": "git",
     "url": "git+https://github.com/jcuffney/golang-playground.git"
   },
-  "author": "",
+  "author": "Joe Cuffney <josephcuffney@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jcuffney/golang-playground/issues"
   },
-  "homepage": "https://github.com/jcuffney/golang-playground#readme"
+  "homepage": "https://github.com/jcuffney/golang-playground#readme",
+  "devDependencies": {
+    "serverless": "^2.67.0"
+  }
 }

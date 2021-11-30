@@ -1,34 +1,21 @@
-version: 2.1
+service: go-playground 
 
-orbs: 
-  go: circleci/go@1.7.0
-  node: circleci/node@4.7.0
-  aws-cli: circleci/aws-cli@2.0.6
+provider:
+  name: aws
+  runtime: go1.x
+  lambdaHashingVersion: 20201221
 
-jobs:
-  build:
-    executor:
-      name: go/default
-      tag: '1.16'
-    steps:
-      - checkout
-      - go/load-cache
-      - go/mod-download
-      - go/save-cache
-      # - go/test:
-      #     covermode: atomic
-      #     failfast: true
-      #     race: true
+package:
+ exclude:
+   - ./**
+ include:
+   - ./bin/**
 
-  deploy:
-    steps:
-      - checkout
-      - node/install
-      - run: node --version
-      # - run: serverless deploy --stage ${CIRCLECI_BRANCH}
+functions:
 
-workflows:
-  primary:
-    jobs:
-      - build
-      - deploy
+  hello-world:
+    handler: bin/main
+    # events:
+    #   - http:
+    #       path: hello
+    #       method: post
