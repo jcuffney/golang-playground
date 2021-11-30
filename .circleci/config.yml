@@ -26,11 +26,11 @@ jobs:
       - checkout
       - node/install
       - run: node --version
-      # - run: serverless deploy --stage ${CIRCLECI_BRANCH}
+      - run: serverless deploy --stage ${CIRCLECI_BRANCH}
 
 workflows:
   primary:
     jobs:
       - build
       - deploy:
-        context: cuffney
+          context: cuffney
