@@ -42,4 +42,6 @@ workflows:
     jobs:
       - build
       - deploy:
+          requires:
+            - build
           context: cuffney
