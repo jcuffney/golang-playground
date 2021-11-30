@@ -34,7 +34,7 @@ jobs:
     executor: node/default
     steps:
       - checkout
-      - node/install
+      - node/install-packages
       - attach_workspace:
           at: /home/circleci/project
       - run: node --version
