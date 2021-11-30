@@ -15,6 +15,7 @@ jobs:
       - go/load-cache
       - go/mod-download
       - go/save-cache
+      - make build
       - persist_to_workspace:
           root: /home/circleci/project
           paths:
