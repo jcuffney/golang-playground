@@ -7,9 +7,7 @@ orbs:
 
 jobs:
   build:
-    executor:
-      name: go/default
-      tag: '1.16'
+    executor: go/default
     steps:
       - checkout
       - go/load-cache
@@ -21,6 +19,7 @@ jobs:
       #     race: true
 
   deploy:
+    executor: node/default
     steps:
       - checkout
       - node/install
