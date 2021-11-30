@@ -6,6 +6,18 @@ orbs:
   aws-cli: circleci/aws-cli@2.0.6
 
 jobs:
+  lint:
+    executor:
+      name: go/default
+      tag: '1.16'
+    steps:
+      - checkout
+      - go/load-cache
+      - go/mod-download
+      - go/save-cache
+      - run:
+          name: Lint
+          command: make lint
   build:
     executor:
       name: go/default
@@ -24,12 +36,26 @@ jobs:
             - bin/* 
       - store_artifacts:
             path: bin
+
+  test:
+    executor:
+      name: go/default
+      tag: '1.16'
+    steps:
+      - checkout
+      - go/load-cache
+      - go/mod-download
+      - go/save-cache
+      - run:
+          name: Coverage
+          command: make cover 
       # - go/test:
       #     covermode: atomic
       #     failfast: true
       #     race: true
       # - store_test_results:
       #     path: coverage
+
   deploy:
     executor: node/default
     steps:
@@ -43,8 +69,12 @@ jobs:
 workflows:
   primary:
     jobs:
+      - lint
+      - test
       - build
       - deploy:
           requires:
+            - lint
+            - test
             - build
           context: cuffney
