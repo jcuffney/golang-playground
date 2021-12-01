@@ -63,7 +63,6 @@ jobs:
       - node/install-packages
       - attach_workspace:
           at: /home/circleci/project
-      - run: node --version
       - run: node ./node_modules/serverless/bin/serverless deploy --stage v1
 
 workflows:
