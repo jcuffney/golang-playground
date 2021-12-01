@@ -64,7 +64,7 @@ jobs:
       - attach_workspace:
           at: /home/circleci/project
       - run: node --version
-      - run: node ./node_modules/serverless/bin/serverless deploy --stage ${CIRCLE_BRANCH}
+      - run: node ./node_modules/serverless/bin/serverless deploy --stage v1
 
 workflows:
   primary:
