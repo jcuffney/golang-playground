@@ -14,9 +14,12 @@ package:
 
 functions:
 
-  hello-world:
-    handler: bin/main
+  health:
+    handler: bin/health
     events:
       - http:
-          path: /
+          path: health
+          method: get
+      - http:
+          path: health
           method: post

@@ -11,10 +11,12 @@ lint:
 # 	go build -o bin/main main.go
 
 test:
-	go build -o bin/main main.go
+	echo "test"	
 
 build:
-	go build -o bin/main main.go
+	rm -rf bin
+	mkdir bin
+	go build -o bin ./*.go
 
 run:
 	go run main.go
