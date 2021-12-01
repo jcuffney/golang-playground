@@ -1,14 +1,15 @@
-# Go (lang) Makefile
-# - used for development
-# - used in CI
-# @author: Joe Cuffney <josephcuffney@gmail.com>
+init:
+	go mod download
+
+init\:hard:
+	rm go.sum || true
+	go mod download
 
 dev:
-	serverless invoke local --function hello-world
+	serverless invoke local --function health
 
 lint:
 	echo "lint"
-# 	go build -o bin/main main.go
 
 test:
 	echo "test"	
@@ -19,12 +20,10 @@ build:
 	go build -o bin ./*.go
 
 run:
-	go run main.go
+	go run health.go
 
 cover:
 	echo "cover"
-# 	go test -coverprofile=coverage.out
-# 	go tool cover -html=coverage.out
 
 fmt:
 	go fmt ./...
